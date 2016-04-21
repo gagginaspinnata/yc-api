@@ -10,6 +10,10 @@ var _async = require("async");
 
 var _async2 = _interopRequireDefault(_async);
 
+var _mailgun = require("mailgun");
+
+var _mailgun2 = _interopRequireDefault(_mailgun);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20,13 +24,6 @@ var Alerter = function () {
 
         this.top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         this.story_url = 'https://hacker-news.firebaseio.com/v0/item';
-        // this.min_score = 300;
-
-        // this.get_stories((stories) => {
-        //     this.stories_with_score(stories, 10, (result) => {
-        //         console.log(result);
-        //     })
-        // });
     }
 
     // get the top stories on YC and parse them as json to a cb
@@ -107,18 +104,58 @@ var Alerter = function () {
                 });
             });
         }
+
+        // takes the API url of mailgun
+        // sender email
+        // to email
+        // subject and body
+        // execute a cb
+        //     example of email object:
+        //     let email = {
+        //     apikey: '',
+        //     server: '',
+        //     sender: '',
+        //     to: '',
+        //     subject: '',
+        //     body: ''
+        // };
+
+    }, {
+        key: "send_email",
+        value: function send_email(email, cb) {
+            var msg = new _mailgun2.default.Mailgun(email.apikey);
+            msg.sendText(email.sender, email.to, email.subject, email.body, email.server, 'noreply@example.com', function (err) {
+                if (err) {
+                    console.log(err);
+                    throw err;
+                }
+                cb();
+            });
+        }
     }]);
 
     return Alerter;
 }();
 
 var alerter = new Alerter();
-alerter.stories_with_score(500, function (stories) {
-    _async2.default.each(stories, function (story, cb) {
-        console.log(story.title + " url: " + story.url);
-        cb();
-    }, function (err, res) {
-        if (err) throw err;
-        console.log('done');
-    });
+var email = {
+    apikey: 'key-1ka0s3k0tiactaydn9q0sl0kw2df-9g9',
+    server: 'mauromarano.mailgun.org',
+    sender: 'mauromarano@gmail.com',
+    to: 'gagginaspinnata@gmail.com',
+    subject: 'provola',
+    body: 'sei un provolone2'
+};
+
+alerter.send_email(email, function () {
+    console.log('done');
 });
+// alerter.stories_with_score(500, (stories) => {
+//     async.each(stories, (story, cb) => {
+//         console.log(`${story.title} url: ${story.url}`);
+//         cb();
+//     }, (err, res) => {
+//         if (err) throw err;
+//         console.log('done');
+//     });
+// });

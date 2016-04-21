@@ -1,7 +1,8 @@
 import request from "request"
 import async from "async"
+import mailgun from "mailgun"
 
-class Alerter {
+class YC_Alerter {
     constructor() {
         this.top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         this.story_url = 'https://hacker-news.firebaseio.com/v0/item';
@@ -71,9 +72,51 @@ class Alerter {
             });
         });
     }
+
+    // takes the API url of mailgun
+    // sender email
+    // to email
+    // subject and body
+    // execute a cb
+    //     example of email object:
+    //     let email = {
+    //     apikey: '',
+    //     server: '',
+    //     sender: '',
+    //     to: '',
+    //     subject: '',
+    //     body: ''
+    // };
+    send_email(email, cb) {
+        let msg = new mailgun.Mailgun(email.apikey);
+        msg.sendText(email.sender, email.to,
+            email.subject,
+            email.body,
+            email.server,
+            'noreply@example.com',
+            function(err) {
+                if (err) {
+                    console.log(err);
+                    throw err;
+                }
+                cb();
+            });
+    }
 }
 
-// let alerter = new Alerter();
+let alerter = new Alerter();
+let email = {
+    apikey: '',
+    server: '',
+    sender: '',
+    to: '',
+    subject: 'provola',
+    body: 'sei un provolone2'
+};
+
+alerter.send_email(email, () => {
+    console.log('done');
+});
 // alerter.stories_with_score(500, (stories) => {
 //     async.each(stories, (story, cb) => {
 //         console.log(`${story.title} url: ${story.url}`);
