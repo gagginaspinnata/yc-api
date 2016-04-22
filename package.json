@@ -2,7 +2,7 @@
   "name": "yc-api",
   "version": "1.0.4",
   "description": "This is a wrapper module around the Hacker News API. You can filter the news in order to show you only the stories with a minimum score.",
-  "main": "yc_api.js",
+  "main": "yc-api.js",
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "request": "^2.72.0"
