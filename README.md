@@ -1,19 +1,19 @@
 What is it?
 ===========
 
-This is module let you search for [Hacker News](https://news.ycombinator.com/) stories. You can filter the news in order to show you only the stories with a minimum score and even email them to you!
+This is module let you search for [Hacker News](https://news.ycombinator.com/) stories. You can filter the news in order to show you only the stories with a minimum score.
 
 Installation
 ============
-As simple as `npm install yc_alerter`
+As simple as `npm install yc_api`
 
 
 Usages
 ------
 
-Import the module with `var yc_alerter = require('yc_alerter')`.
+Import the module with `var yc_api = require('yc_api')`.
 
-In the new es6 fashon `import yc_alerter from yc_alerter`.
+In the new es6 fashon `import yc_api from yc_api`.
 
 --
 
@@ -58,19 +58,3 @@ Same as **get_stories** but return into the object only the stories with the min
 		console.log(stories);
 	});
 	
---
-
-###send_email(email,cb)
-
-Send an email within the [mailgun](https://www.mailgun.com/) api.
-
-Takes an *email* object and a callback. The email object looks like this:
-
-	let email = {
-	    apikey: 'my api key',
-	    server: 'my server (look in the mailgun panel)',
-	    sender: 'myemail@gmail.com',
-	    to: 'toEmail@gmail.com',
-	    subject: 'YC NEWS!',
-	    body: 'Check this amazing news! ..'
-	};
