@@ -13,16 +13,14 @@ Usages
 
 Import the module with `var yc-api = require('yc-api')`.
 
-In the new es6 fashon `import yc_-pi from yc-api`.
+In the new es6 fashon `import yc-pi from yc-api`.
 
---
 
 ###get\_top\_stories\_id(cb)
 
 This take the top stories (IDs) from YC and return them into the callback.
 
 
---
 
 ###get_story(url,cb)
 Takes an *url* as argument and return into the callback a **JSON** object containing the story.
@@ -41,20 +39,18 @@ The returned object looks like this:
 	      "url" : "http://www.getdropbox.com/u/2/screencast.html"
 	  }
 
---
 
 ###get_stories(cb)
 Return into a callback an array of **JSON** object containing the stories.
 
 
---
 
 ###stories\_with\_score(score,cb)
 Same as **get_stories** but return into the object only the stories with the minimum score of **score**.
 
 **Example**
 
-	stories_with_score(200,(stories)=>{
+	stories_with_score(200,function (stories){
 		console.log(stories);
 	});
 
@@ -63,12 +59,13 @@ Example
 =======
 
 	var yc-api = require('yc-api');
+	var async = require('async');
 
 	var yc = new yc-api.API;
 
 	yc.stories_with_score(500, function (stories)  {
 	    async.each(stories,function (story, cb)  {
-	        console.log(`${story.title} url: ${story.url}`);
+	        console.log(story.title);
 	        cb();
 	    }, function (err, res) {
 	        if (err) throw err;
