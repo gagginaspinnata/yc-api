@@ -15,6 +15,10 @@
     "build": "babel --presets es2015 ./src/app.js -o yc-api.js && node yc-api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "git@github.com:gagginaspinnata/yc-api.git"
+  },
   "author": "",
   "license": "ISC"
 }
