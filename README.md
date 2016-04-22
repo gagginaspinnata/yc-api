@@ -5,15 +5,15 @@ This is a wrapper module around the [Hacker News](https://news.ycombinator.com/)
 
 Installation
 ============
-As simple as `npm install yc_api`
+As simple as `npm install yc-api`
 
 
 Usages
 ------
 
-Import the module with `var yc_api = require('yc_api')`.
+Import the module with `var yc-api = require('yc-api')`.
 
-In the new es6 fashon `import yc_api from yc_api`.
+In the new es6 fashon `import yc_-pi from yc-api`.
 
 --
 
