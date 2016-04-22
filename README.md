@@ -62,13 +62,15 @@ Same as **get_stories** but return into the object only the stories with the min
 Example
 =======
 
-	let yc = new yc_api();
+	var yc-api = require('yc-api');
 
-	yc.stories_with_score(500, (stories) => {
-	    async.each(stories, (story, cb) => {
+	var yc = new yc-api.API;
+
+	yc.stories_with_score(500, function (stories)  {
+	    async.each(stories,function (story, cb)  {
 	        console.log(`${story.title} url: ${story.url}`);
 	        cb();
-	    }, (err, res) => {
+	    }, function (err, res) {
 	        if (err) throw err;
 	        console.log('done');
 	    });

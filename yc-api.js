@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.API = undefined;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _request = require("request");
@@ -14,9 +19,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var YC_Alerter = function () {
-    function YC_Alerter() {
-        _classCallCheck(this, YC_Alerter);
+var API = exports.API = function () {
+    function API() {
+        _classCallCheck(this, API);
 
         this.top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         this.story_url = 'https://hacker-news.firebaseio.com/v0/item';
@@ -25,7 +30,7 @@ var YC_Alerter = function () {
     // get the top stories on YC and parse them as json to a cb
 
 
-    _createClass(YC_Alerter, [{
+    _createClass(API, [{
         key: "get_top_stories_id",
         value: function get_top_stories_id(cb) {
             _request2.default.get(this.top_stories_url, function (err, resp, body) {
@@ -133,17 +138,5 @@ var YC_Alerter = function () {
 
     }]);
 
-    return YC_Alerter;
+    return API;
 }();
-
-// let alerter = new Alerter();
-
-// alerter.stories_with_score(500, (stories) => {
-//     async.each(stories, (story, cb) => {
-//         console.log(`${story.title} url: ${story.url}`);
-//         cb();
-//     }, (err, res) => {
-//         if (err) throw err;
-//         console.log('done');
-//     });
-// });

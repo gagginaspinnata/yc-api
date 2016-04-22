@@ -1,7 +1,7 @@
 import request from "request"
 import async from "async"
 
-class yc_api {
+export class API {
     constructor() {
         this.top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         this.story_url = 'https://hacker-news.firebaseio.com/v0/item';
@@ -102,15 +102,3 @@ class yc_api {
     //         });
     // }
 }
-
-// let alerter = new yc_api();
-
-// alerter.stories_with_score(500, (stories) => {
-//     async.each(stories, (story, cb) => {
-//         console.log(`${story.title} url: ${story.url}`);
-//         cb();
-//     }, (err, res) => {
-//         if (err) throw err;
-//         console.log('done');
-//     });
-// });
