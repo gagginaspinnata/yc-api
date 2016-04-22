@@ -1,7 +1,7 @@
 import request from "request"
 import async from "async"
 
-class YC_Alerter {
+class yc_api {
     constructor() {
         this.top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
         this.story_url = 'https://hacker-news.firebaseio.com/v0/item';
@@ -103,7 +103,7 @@ class YC_Alerter {
     // }
 }
 
-// let alerter = new Alerter();
+// let alerter = new yc_api();
 
 // alerter.stories_with_score(500, (stories) => {
 //     async.each(stories, (story, cb) => {

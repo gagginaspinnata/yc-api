@@ -1,7 +1,7 @@
 What is it?
 ===========
 
-This is module let you search for [Hacker News](https://news.ycombinator.com/) stories. You can filter the news in order to show you only the stories with a minimum score.
+This is a wrapper module around the [Hacker News](https://news.ycombinator.com/) API. You can filter the news in order to show you only the stories with a minimum score.
 
 Installation
 ============
@@ -56,5 +56,21 @@ Same as **get_stories** but return into the object only the stories with the min
 
 	stories_with_score(200,(stories)=>{
 		console.log(stories);
+	});
+
+
+Example
+=======
+
+	let yc = new yc_api();
+
+	yc.stories_with_score(500, (stories) => {
+	    async.each(stories, (story, cb) => {
+	        console.log(`${story.title} url: ${story.url}`);
+	        cb();
+	    }, (err, res) => {
+	        if (err) throw err;
+	        console.log('done');
+	    });
 	});
 	
