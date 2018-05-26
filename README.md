@@ -16,13 +16,13 @@ Import the module with `var yc-api = require('yc-api')`.
 In the new es6 fashon `import yc-pi from yc-api`.
 
 
-###get\_top\_stories\_id(cb)
+### get\_top\_stories\_id(cb)
 
 This take the top stories (IDs) from YC and return them into the callback.
 
 
 
-###get_story(url,cb)
+### get_story(url,cb)
 Takes an *url* as argument and return into the callback a **JSON** object containing the story.
 
 The returned object looks like this:
@@ -40,12 +40,12 @@ The returned object looks like this:
 	  }
 
 
-###get_stories(cb)
+### get_stories(cb)
 Return into a callback an array of **JSON** object containing the stories.
 
 
 
-###stories\_with\_score(score,cb)
+### stories\_with\_score(score,cb)
 Same as **get_stories** but return into the object only the stories with the minimum score of **score**.
 
 **Example**
