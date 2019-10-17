@@ -2,7 +2,7 @@
 
 This is a wrapper module around the [Hacker News](https://news.ycombinator.com/) API. You can filter the news in order to show you only the stories with a minimum score.
 
-# async/await support
+# async/awaitg support
 
 Tha last version of this library support async/await.
 
@@ -50,8 +50,7 @@ Same as **get_stories** but return into the object only the stories with the min
 
 # Example
 
-    var yc_api = require('yc-api');
-    var async = require('async');
+    const yc_api = require('yc-api');
 
     var yc = new yc_api.API;
 
