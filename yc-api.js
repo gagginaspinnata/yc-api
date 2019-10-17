@@ -47,6 +47,4 @@ class API {
   }
 }
 
-const api = new API();
-api.stories_with_score(100).then(data => console.log(data));
 module.exports = API;
